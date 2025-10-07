@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+
+body {
+  font-family: 'Fira Code', monospace;
+  background: radial-gradient(circle at 20% 30%, #14142b, #0d0d19, #000);
+  color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Hiệu ứng mờ sáng nhẹ */
+.container {
+  width: 80%;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  animation: fadeIn 2s ease;
+}
+
+/* Avatar */
+.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 3px solid cyan;
+  object-fit: cover;
+  margin-bottom: 15px;
+  animation: glowPulse 2s infinite alternate;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 30px 0;
+  border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+}
+
+.header h1 {
+  font-size: 2em;
+  letter-spacing: 3px;
+  color: cyan;
+  margin: 10px 0;
+  text-shadow: 0 0 20px cyan;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid cyan;
+  width: 0;
+  animation: typing 3s steps(20, end) forwards, blink 0.75s step-end infinite;
+}
+
+.header h2 {
+  background: linear-gradient(90deg, cyan, #00ff88);
+  color: #111;
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 25px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  box-shadow: 0 0 15px cyan;
+}
+
+/* Đoạn giới thiệu */
+.intro {
+  color: #ddd;
+  width: 70%;
+  margin: auto;
+  line-height: 1.6;
+}
+
+/* Section box */
+.section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.box {
+  width: 48%;
+  background: rgba(0, 255, 255, 0.08);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 15px;
+  transition: all 0.4s ease;
+}
+
+/* Hover Glow */
+.hover-glow:hover {
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+  transform: translateY(-8px);
+}
+
+/* Tiêu đề */
+h3 {
+  text-align: center;
+  color: cyan;
+  letter-spacing: 2px;
+  border-bottom: 2px solid cyan;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+/* Links */
+a {
+  color: #00ffff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+a:hover {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+/* Skills */
+.skill li {
+  list-style: none;
+  margin: 8px 0;
+  padding: 8px;
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: 6px;
+  transition: 0.3s;
+}
+.skill li:hover {
+  background: cyan;
+  color: #111;
+}
+
+/* Language Bars */
+.lang {
+  margin: 10px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  color: #111;
+  font-weight: bold;
+  position: relative;
+}
+.lang span {
+  position: relative;
+  z-index: 2;
+  padding-left: 10px;
+}
+.lang::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: fillBar 2s forwards;
+  z-index: 1;
+  opacity: 0.8;
+}
+.php::before { background: linear-gradient(90deg, #00ff88, cyan); animation-delay: 0.5s; }
+.js::before { background: linear-gradient(90deg, orange, yellow); animation-delay: 1s; }
+.csharp::before { background: linear-gradient(90deg, purple, violet); animation-delay: 1.5s; }
+.mobile::before { background: linear-gradient(90deg, orangered, red); animation-delay: 2s; }
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes glowPulse {
+  from { box-shadow: 0 0 10px cyan; }
+  to { box-shadow: 0 0 25px cyan; }
+}
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+@keyframes fillBar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+/* --- Section layout --- */
+.section {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+/* --- Box (khung chứa) --- */
+.box {
+  width: 45%;
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.5s ease;
+  transform: translateY(30px);
+  opacity: 0;
+  animation: slideUp 1s forwards;
+}
+
+/* --- Hiệu ứng xuất hiện (slide lên) --- */
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* --- Tiêu đề trong mỗi box --- */
+.box h3 {
+  color: cyan;
+  font-size: 1.3em;
+  letter-spacing: 2px;
+  border-bottom: 2px solid cyan;
+  display: inline-block;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  text-shadow: 0 0 15px cyan;
+}
+
+/* --- Hiệu ứng hover (nổi sáng, phóng to nhẹ) --- */
+.box:hover {
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6), 0 0 50px rgba(0, 255, 255, 0.2);
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* --- Danh sách kỹ năng (skills) --- */
+.skill li {
+  list-style: none;
+  margin: 10px 0;
+  padding: 10px;
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: 0.3s;
+  font-weight: 500;
+}
+.skill li:hover {
+  background: cyan;
+  color: #111;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px cyan;
+}
+
+/* --- Hiệu ứng thanh ngôn ngữ (language bars) --- */
+.lang {
+  margin: 12px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  font-weight: bold;
+  color: #111;
+  background: rgba(255,255,255,0.05);
+}
+
+.lang span {
+  position: relative;
+  z-index: 2;
+  padding: 8px 10px;
+  display: block;
+}
+
+.lang::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: fillBar 2s forwards;
+  z-index: 1;
+  opacity: 0.9;
+  border-radius: 10px;
+}
+
+/* màu gradient riêng cho từng ngôn ngữ */
+.php::before { background: linear-gradient(90deg, #00ff88, cyan); animation-delay: 0.5s; }
+.js::before { background: linear-gradient(90deg, orange, yellow); animation-delay: 1s; }
+.csharp::before { background: linear-gradient(90deg, purple, violet); animation-delay: 1.5s; }
+.mobile::before { background: linear-gradient(90deg, orangered, red); animation-delay: 2s; }
+
+/* --- Animation cho thanh màu --- */
+@keyframes fillBar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+    
